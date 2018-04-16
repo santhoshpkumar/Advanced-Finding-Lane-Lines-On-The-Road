@@ -30,7 +30,7 @@ The goals / steps of this project are the following:
 The Steps
 ---
 
-The steps of this project are listed below. You can have a look at [Advanced_Lane_Lines.ipynb](Advanced_Lane_Lines.ipynb) for the code.
+The steps of this project are listed below. You can have a look at [Advanced_Lane_Lines.ipynb](advanced_lane_lines.ipynb) for the code.
 
 ### Camera Calibration
 
