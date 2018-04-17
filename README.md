@@ -44,8 +44,6 @@ The steps of this project are listed below. You can have a look at [advanced_lan
 
 ### Camera Calibration
 
-#### 1. Briefly state how you computed the camera matrix and distortion coefficients. Provide an example of a distortion corrected calibration image.
-
 The images for camera calibration are stored in the folder called camera_cal. 
 
 ![alt text][image2]
