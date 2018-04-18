@@ -51,8 +51,8 @@ The goals / steps of this project are the following:
 [image23]: ./output_images/sliding_window_postprocess1.png "Output" 
 [image24]: ./output_images/sliding_window_preprocess2.png "Output"
 [image25]: ./output_images/sliding_window_postprocess2.png "Output" 
-[image26]: ./output_images/smooth.png "Output"
-[image27]: ./output_images/smooth.png "Output" 
+[image26]: ./output_images/smooth1.png "Output"
+[image27]: ./output_images/smooth2.png "Output" 
 
 [image29]: ./output_images/straight_lines1_histogram.png "Output"
 [image30]: ./output_images/straight_lines2_histogram.png "Output" 
