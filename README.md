@@ -259,6 +259,12 @@ The lane for each frame is a simple average of 12 previously computed lanes. Thi
 
 ### Discussion
 
-#### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
+#### 1. Briefly discuss any problems / issues faced in implementation of this project.  Where will the pipeline likely fail?  What could be done to make it more robust?
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+One of the firt aspect is with resoect to the prespective transform (bir'ds view), while the current piplein works with the image taken at the exact camera angel, it is boudn to fail if if the image were caprtured at a different viewport settings. A possible approach is to do some clear algorithm to find the possible lanes and build a initial prespective frame.
+
+Also this pipeline might fail if the car changes lanes, at this point there is no logic in there when the car gets into a prespective of betweeen two lanes. The side effect of this can be seen in the challenge video when it goes unders the bridge, the shadow and the lane color changes would make the pipeline get confused of the actual lane.
+
+It can be evidently seen that in the hard challenge video, there are too many sharp turns and a wide mix of shadow and reflection on the image used for analysis, this noise results in incorrect calcualtion. It would be more appropriate to denoise the image as part of preprocessing and try varying threshold and use more data from the previosu frame to be more sure of the frames used for pipeline and lane identification.
+
+
