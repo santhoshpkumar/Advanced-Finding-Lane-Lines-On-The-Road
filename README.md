@@ -37,9 +37,38 @@ The goals / steps of this project are the following:
 [image13]: ./output_images/straight_lines2_warped.png "Warp Example"
 
 [image15]: ./examples/color_fit_lines.jpg "Fit Visual"
-[image16]: ./examples/example_output.jpg "Output"
-[video1]: ./project_video.mp4 "Video"
 
+[image16]: ./examples/challenge_output.png "Output"
+[image17]: ./examples/challenge_output.gif "Output" 
+[image18]: ./examples/hard_output.png "Output"
+[image19]: ./examples/harder_challenge_output.gif "Output" 
+[image20]: ./examples/project_output.png "Output"
+[image21]: ./examples/project_output.gif "Output" 
+
+[image22]: ./examples/sliding_window_preprocess1.png "Output"
+[image23]: ./examples/sliding_window_postprocess1.png "Output" 
+[image24]: ./examples/sliding_window_preprocess2.png "Output"
+[image25]: ./examples/sliding_window_postprocess2.png "Output" 
+[image26]: ./examples/smooth.png "Output"
+[image27]: ./examples/smooth.png "Output" 
+
+[image29]: ./examples/straight_lines1_histogram.png "Output"
+[image30]: ./examples/straight_lines2_histogram.png "Output" 
+[image31]: ./examples/test2_histogram.png "Output"
+
+[image29]: ./examples/straight_lines1_transformed.png "Output"
+[image30]: ./examples/straight_lines2_transformed.png "Output" 
+[image31]: ./examples/test1_transformed.png "Output"
+[image29]: ./examples/test2_transformed.png "Output"
+
+[image30]: ./examples/straight_lines1_processed.png "Output" 
+[image31]: ./examples/straight_lines2_processed.png "Output"
+[image31]: ./examples/test1_processed.png "Output"
+[image29]: ./examples/test2_processed.png "Output"
+
+[video1]: ./project_video_output.mp4 "Video"
+[video2]: ./challenge_video_output.mp4 "Video"
+[video3]: ./harder_challenge_video_output.mp4 "Video"
 
 The Steps
 ---
