@@ -241,19 +241,19 @@ The lane for each frame is a simple average of 12 previously computed lanes. Thi
 
 ![alt text][image21]
 
-![alt text][image20]
+[![IMAGE_VIDEO](https://img.youtube.com/vi/Eh7RzmnWCQg/1.jpg)](https://www.youtube.com/watch?v=Eh7RzmnWCQg)
 
 #### 2.  Challenge video 
 
 ![alt text][image17]
 
-![alt text][image16]
+[![IMAGE_VIDEO](https://img.youtube.com/vi/Eh7RzmnWCQg/1.jpg)](https://www.youtube.com/watch?v=Eh7RzmnWCQg)
 
 #### 3.  Hard Challenge  video 
 
 ![alt text][image19]
 
-![alt text][image18]
+[![IMAGE_VIDEO](https://img.youtube.com/vi/Eh7RzmnWCQg/1.jpg)](https://www.youtube.com/watch?v=Eh7RzmnWCQg)
 
 ---
 
