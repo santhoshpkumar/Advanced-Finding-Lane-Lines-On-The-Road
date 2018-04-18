@@ -38,33 +38,35 @@ The goals / steps of this project are the following:
 
 [image15]: ./examples/color_fit_lines.jpg "Fit Visual"
 
-[image16]: ./examples/challenge_output.png "Output"
-[image17]: ./examples/challenge_output.gif "Output" 
-[image18]: ./examples/hard_output.png "Output"
-[image19]: ./examples/harder_challenge_output.gif "Output" 
-[image20]: ./examples/project_output.png "Output"
-[image21]: ./examples/project_output.gif "Output" 
+[image16]: ./output_images/challenge_output.png "Output"
+[image17]: ./output_images/challenge_output.gif "Output" 
 
-[image22]: ./examples/sliding_window_preprocess1.png "Output"
-[image23]: ./examples/sliding_window_postprocess1.png "Output" 
-[image24]: ./examples/sliding_window_preprocess2.png "Output"
-[image25]: ./examples/sliding_window_postprocess2.png "Output" 
-[image26]: ./examples/smooth.png "Output"
-[image27]: ./examples/smooth.png "Output" 
+[image18]: ./output_images/hard_output.png "Output"
+[image19]: ./output_images/harder_challenge_output.gif "Output" 
 
-[image29]: ./examples/straight_lines1_histogram.png "Output"
-[image30]: ./examples/straight_lines2_histogram.png "Output" 
-[image31]: ./examples/test2_histogram.png "Output"
+[image20]: ./output_images/project_output.png "Output"
+[image21]: ./output_images/project_output.gif "Output" 
 
-[image32]: ./examples/straight_lines1_transformed.png "Output"
-[image33]: ./examples/straight_lines2_transformed.png "Output" 
-[image34]: ./examples/test1_transformed.png "Output"
-[image35]: ./examples/test2_transformed.png "Output"
+[image22]: ./output_images/sliding_window_preprocess1.png "Output"
+[image23]: ./output_images/sliding_window_postprocess1.png "Output" 
+[image24]: ./output_images/sliding_window_preprocess2.png "Output"
+[image25]: ./output_images/sliding_window_postprocess2.png "Output" 
+[image26]: ./output_images/smooth.png "Output"
+[image27]: ./output_images/smooth.png "Output" 
 
-[image36]: ./examples/straight_lines1_processed.png "Output" 
-[image37]: ./examples/straight_lines2_processed.png "Output"
-[image38]: ./examples/test1_processed.png "Output"
-[image39]: ./examples/test2_processed.png "Output"
+[image29]: ./output_images/straight_lines1_histogram.png "Output"
+[image30]: ./output_images/straight_lines2_histogram.png "Output" 
+[image31]: ./output_images/test2_histogram.png "Output"
+
+[image32]: ./output_images/straight_lines1_transformed.png "Output"
+[image33]: ./output_images/straight_lines2_transformed.png "Output" 
+[image34]: ./output_images/test1_transformed.png "Output"
+[image35]: ./output_images/test2_transformed.png "Output"
+
+[image36]: ./output_images/straight_lines1_processed.png "Output" 
+[image37]: ./output_images/straight_lines2_processed.png "Output"
+[image38]: ./output_images/test1_processed.png "Output"
+[image39]: ./output_images/test2_processed.png "Output"
 
 [video1]: ./project_video_output.mp4 "Video"
 [video2]: ./challenge_video_output.mp4 "Video"
@@ -149,7 +151,7 @@ I verified that my perspective transform was working as expected by drawing the 
 
 #### 4. Identified lane-line pixels and fit their positions with a polynomial
 
-### Histogram
+#### Histogram
 The peaks in the histogram tells us about the likely position of the lanes in the image.
 
 ![alt text][image29]
@@ -158,7 +160,7 @@ The peaks in the histogram tells us about the likely position of the lanes in th
 
 ![alt text][image31]
 
-### Sliding Window Search
+#### Sliding Window Search
 
 I then perform a sliding window search, starting with the base likely positions of the 2 lanes, calculated from the histogram. I have used 10 windows of width 100 pixels.
 
@@ -176,27 +178,82 @@ Then finally i fit my lines with a 2nd order polynomial kinda like this:
 
 ![alt text][image15]
 
+#### Searching around a previously detected line.
+
+Since consecutive frames are likely to have lane lines in roughly similar positions, in this section we search around a margin of 50 pixels of the previously detected lane lines.
+
 ![alt text][image26]
 
 ![alt text][image27]
 
-#### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
+#### 5. Computing the radius of curvature and center offset.
 
-I did this in lines # through # in my code in `my_other_file.py`
+The radius of curvature is computed according to the formula and method described in the classroom material. Since we perform the polynomial fit in pixels and whereas the curvature has to be calculated in real world meters, we have to use a pixel to meter transformation and recompute the fit again.
 
-#### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
+The mean of the lane pixels closest to the car gives us the center of the lane. The center of the image gives us the position of the car. The difference between the 2 is the offset from the center.
 
-I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
+#### 6. Inverse Transform
 
-![alt text][image16]
+In this block of code we:
+- Paint the lane area
+- Perform an inverse perspective transform
+- Combine the processed image with the original image.
+
+![alt text][image32]
+
+![alt text][image33]
+
+![alt text][image34]
+
+![alt text][image35]
+
+
+### Tying up all together 
+
+#### Figuring out bad frames
+There will be some frames where no lanes will be detected or the lanes might not make sense. We determine the bad frames if any of the following conditions are met:
+
+- No pixels were detected using the sliding window search or search around the previously detected line.
+- The average gap between the lanes is less than 0.7 times or greater than 1.3 times the globally maintained moving average of the lane gap.
+
+#### What to do if a bad frame is detected?
+
+- Perform a sliding window search again (this is done in the `brute_search` method in the code block below
+- If this still results in a bad frame then we fall back to the previous well detected frame.
+
+#### Averaging lanes
+
+The lane for each frame is a simple average of 12 previously computed lanes. This is done in the `get_averaged_line` method.
+
+![alt text][image36]
+
+![alt text][image37]
+
+![alt text][image38]
+
+![alt text][image39]
 
 ---
 
 ### Pipeline (video)
 
-#### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
+#### 1.  Project video 
 
-Here's a [link to my video result](./project_video.mp4)
+![alt text][image21]
+
+![alt text][image20]
+
+#### 2.  Challenge video 
+
+![alt text][image17]
+
+![alt text][image16]
+
+#### 3.  Hard Challenge  video 
+
+![alt text][image19]
+
+![alt text][image18]
 
 ---
 
