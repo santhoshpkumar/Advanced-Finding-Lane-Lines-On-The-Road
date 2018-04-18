@@ -56,15 +56,15 @@ The goals / steps of this project are the following:
 [image30]: ./examples/straight_lines2_histogram.png "Output" 
 [image31]: ./examples/test2_histogram.png "Output"
 
-[image29]: ./examples/straight_lines1_transformed.png "Output"
-[image30]: ./examples/straight_lines2_transformed.png "Output" 
-[image31]: ./examples/test1_transformed.png "Output"
-[image29]: ./examples/test2_transformed.png "Output"
+[image32]: ./examples/straight_lines1_transformed.png "Output"
+[image33]: ./examples/straight_lines2_transformed.png "Output" 
+[image34]: ./examples/test1_transformed.png "Output"
+[image35]: ./examples/test2_transformed.png "Output"
 
-[image30]: ./examples/straight_lines1_processed.png "Output" 
-[image31]: ./examples/straight_lines2_processed.png "Output"
-[image31]: ./examples/test1_processed.png "Output"
-[image29]: ./examples/test2_processed.png "Output"
+[image36]: ./examples/straight_lines1_processed.png "Output" 
+[image37]: ./examples/straight_lines2_processed.png "Output"
+[image38]: ./examples/test1_processed.png "Output"
+[image39]: ./examples/test2_processed.png "Output"
 
 [video1]: ./project_video_output.mp4 "Video"
 [video2]: ./challenge_video_output.mp4 "Video"
@@ -147,11 +147,38 @@ I verified that my perspective transform was working as expected by drawing the 
 
 ![alt text][image13]
 
-#### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
+#### 4. Identified lane-line pixels and fit their positions with a polynomial
 
-Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
+### Histogram
+The peaks in the histogram tells us about the likely position of the lanes in the image.
+
+![alt text][image29]
+
+![alt text][image30]
+
+![alt text][image31]
+
+### Sliding Window Search
+
+I then perform a sliding window search, starting with the base likely positions of the 2 lanes, calculated from the histogram. I have used 10 windows of width 100 pixels.
+
+The x & y coordinates of non zeros pixels are found, a polynomial is fit for these coordinates and the lane lines are drawn.
+
+![alt text][image22]
+
+![alt text][image23]
+
+![alt text][image24]
+
+![alt text][image25]
+
+Then finally i fit my lines with a 2nd order polynomial kinda like this:
 
 ![alt text][image15]
+
+![alt text][image26]
+
+![alt text][image27]
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
