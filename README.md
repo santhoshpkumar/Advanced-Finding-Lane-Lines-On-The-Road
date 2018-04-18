@@ -33,8 +33,8 @@ The goals / steps of this project are the following:
 
 [image10]: ./output_images/straight_lines1_vertices.png "Warp Example"
 [image11]: ./output_images/straight_lines2_vertices.png "Warp Example"
-[image12]: ./output_images/straight_lines1_warped.png.jpg "Warp Example"
-[image13]: ./output_images/straight_lines2_warped.png.jpg "Warp Example"
+[image12]: ./output_images/straight_lines1_warped.png "Warp Example"
+[image13]: ./output_images/straight_lines2_warped.png "Warp Example"
 
 [image15]: ./examples/color_fit_lines.jpg "Fit Visual"
 [image16]: ./examples/example_output.jpg "Output"
